@@ -6,11 +6,13 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.common.proxy import Proxy, ProxyType
 from http_request_randomizer.requests.proxy.requestProxy import RequestProxy
+from random import randrange
 
 x = 0
 
 y = input("How many votes would you like to place? ")
-gap = input("How long would you like to wait between each vote? (S) ")
+gapp = input("Around how long would you like to wait between each vote? (S) ")
+gap = int(gapp) + randrange(10)
 
 while x < int(y):
 	PROXY = random.choice(open('proxies.txt').readlines())
