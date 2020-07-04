@@ -15,7 +15,7 @@ gapp = input("Around how long would you like to wait between each vote? (S) ")
 gap = int(gapp) + randrange(10)
 
 while x < int(y):
-	PROXY = random.choice(open('proxies.txt').readlines())
+	PROXY = random.choice(open('proxy-2.txt').readlines())
 
 	webdriver.DesiredCapabilities.CHROME['proxy']={
     "httpProxy":PROXY,
@@ -24,7 +24,7 @@ while x < int(y):
     "proxyType":"MANUAL",
 }
 # 1000 over saturday and subnday
-	print(PROXY)
+	print("Current IP: " + PROXY)
 
 	try:
 		driver = webdriver.Chrome(executable_path= r"/Users/will/Desktop/chromedriver")
@@ -38,14 +38,16 @@ while x < int(y):
 
 		driver.find_element_by_xpath("//*[@id=\"wpcf7-f351155-p351095-o7\"]/form/p[2]/input").click()
 
-		time.sleep(10)
+		time.sleep(5)
 
 		driver.close()
+		print(str(x) + " successful votes.")
 
 		time.sleep(int(gap))
 
 		x += 1
 	except:
+		driver.close()
 		print("Broken Proxy. Trying again... ")
 
 
